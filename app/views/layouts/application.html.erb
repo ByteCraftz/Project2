@@ -14,5 +14,14 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+            <% if current_user %>
+          <%= button_to(
+            "Log Out",
+            destroy_user_session_path,
+            method: :delete
+          ) %>
+        <% else %>
+          <a class="btn btn-sm btn-outline-secondary" href="<%= new_user_session_path %>">Sign in</a>
+        <% end %>
   </body>
 </html>
